@@ -2,6 +2,8 @@ import axios from "axios";
 
 // const baseURL = "http://localhost:5000/api";
 const baseURL = "http://13.60.49.46:5000/api";
+export const accessKeyId = "AKIAZI2LDTN6NKVZE5DR";
+export const secretAccessKey = "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";
 
 const api = axios.create({
   baseURL: baseURL,
