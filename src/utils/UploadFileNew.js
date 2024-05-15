@@ -12,7 +12,7 @@ export const UploadFileNew = async (dataFile, setDownloadLinkIdCard) => {
       // Optionally, you can update the progress UI
     });
 
-    console.log("Upload successful. Download URL:", downloadURL);
+    // console.log("Upload successful. Download URL:", downloadURL);
     alert("File uploaded successfully");
 
     setDownloadLinkIdCard(downloadURL);
