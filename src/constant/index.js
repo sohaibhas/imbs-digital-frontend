@@ -1,0 +1,486 @@
+export const STEP = [
+  { title: "Personal Information", step: 1 },
+  { title: "Business Information", step: 2 },
+  { title: "Parent Company", step: 3 },
+  { title: "Lience Information", step: 4 },
+  { title: "Other Portals", step: 5 },
+];
+
+export const registerFormFields = [
+  {
+    label: "Name",
+    name: "name",
+    type: "text",
+    placeholder: "name",
+    errorTitle: "Name Should be Must",
+    variant: "primary",
+  },
+  {
+    label: "Email",
+    name: "email",
+    type: "email",
+    placeholder: "123@ex.com",
+    errorTitle: "Email Should be Must",
+    variant: "primary",
+  },
+  {
+    label: "Password",
+    name: "password",
+    type: "password",
+    placeholder: "••••••••",
+    errorTitle: "Password Should be Must",
+    variant: "primary",
+  },
+  {
+    label: "Phone Number",
+    name: "phoneNumber",
+    type: "text",
+    placeholder: "9665XXXXXXXX",
+    errorTitle: "Provide Phone Number",
+    variant: "primary",
+  },
+];
+
+export const loginFormFields = [
+  {
+    label: "Email",
+    name: "email",
+    type: "email",
+    placeholder: "123@ex.com",
+    errorTitle: "Email Should be Must",
+    variant: "primary",
+  },
+  {
+    label: "Password",
+    name: "password",
+    type: "password",
+    placeholder: "••••••••",
+    errorTitle: "Password Should be Must",
+    variant: "primary",
+  },
+];
+
+export const tab1 = [
+  {
+    name: "firstname",
+    type: "text",
+    label: "First name",
+    title: "firstname",
+    errorTitle: "Name Should be Must",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "lastname",
+    type: "text",
+    label: "Last name",
+    title: "lastname",
+    errorTitle: "Last Name Should be Must",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "dateOfBirth",
+    type: "date",
+    label: "Date Of Birth",
+    title: "dob",
+    errorTitle: "Provide your Date of Birth",
+    placeholder: "",
+    variant: "date",
+  },
+  {
+    name: "phoneNumberKsa",
+    type: "text",
+    label: "Phone Number",
+    title: "phoneno",
+    errorTitle: "Provide Phone Number",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "homeCountryNumber",
+    type: "text",
+    label: "Home Country Number",
+    title: "homephoneno",
+    errorTitle: "Provide Phone Number",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "personCountry",
+    type: "text",
+    label: "Country",
+    title: "personCountry",
+    errorTitle: "Provide Country",
+    placeholder: "",
+    variant: "secondary",
+  },
+
+  {
+    name: "passportNumber",
+    type: "text",
+    label: "Passport Number",
+    title: "passportno",
+    errorTitle: "Provide Passport Number",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "idCardNumber",
+    type: "text",
+    label: "ID Card Number",
+    title: "idcard",
+    errorTitle: "Provide ID Card Number",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "iqamaNumber",
+    type: "text",
+    label: "Iqama ID",
+    title: "iqamaid",
+    errorTitle: "Provide Iqama ID",
+    placeholder: "",
+    variant: "secondary",
+  },
+];
+
+export const tab2 = [
+  {
+    name: "companyNameEnglish",
+    type: "text",
+    label: "Name (Arabic)",
+    title: "companyNameEnglish",
+    errorTitle: "English Name Should be Must",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "companyNameArabic",
+    type: "text",
+    label: "Company Name (Arabic)",
+    title: "companyNameArabic",
+    errorTitle: "Arabic Name Should be Must",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "businessPurpose",
+    type: "text",
+    label: "Bussiness Purpose",
+    title: "description",
+    errorTitle: "Describe Your Bussiness",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "licenseType",
+    type: "text",
+    label: "Lience Type",
+    title: "liencetype",
+    errorTitle: "Your Lience Type",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "sector",
+    type: "text",
+    label: "Company Sector",
+    title: "sector",
+    errorTitle: "Provide Company Sector",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "country",
+    type: "text",
+    label: "Country",
+    title: "country",
+    errorTitle: "select your country",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "email",
+    type: "emali",
+    label: "Email",
+    title: "email",
+    errorTitle: "your email",
+    placeholder: "",
+    variant: "secondary",
+  },
+];
+
+export const tab3 = [
+  {
+    name: "englishName",
+    type: "text",
+    label: "Name (English)",
+    title: "engname",
+    errorTitle: "Business Name Should be Must",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "arabicName",
+    type: "text",
+    label: "Name (Arabic)",
+    title: "arabicname",
+    errorTitle: "Arabic Name Should be Must",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "registrationNumber",
+    type: "text",
+    label: "Company Registration",
+    title: "registration",
+    errorTitle: "Provide Registration Name",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "issueDate",
+    type: "date",
+    label: "Issue Date",
+    title: "issuedate",
+    errorTitle: "Provide Issue Name",
+    placeholder: "",
+    variant: "date",
+  },
+  {
+    name: "expiryDate",
+    type: "date",
+    label: "Expiry Date",
+    title: "expirydate",
+    errorTitle: "Provide Expiry Date",
+    placeholder: "",
+    variant: "date",
+  },
+];
+
+export const tab4 = [
+  {
+    name: "misaLience",
+    type: "text",
+    label: "MISA Licence",
+    title: "misaLience",
+    errorTitle: "Provide MISA Licence",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "misaLienceissue",
+    type: "text",
+    label: "Misa Issue Date",
+    title: "misaLienceissue",
+    errorTitle: "Provide MISA Licence Issue Date",
+    placeholder: "",
+    variant: "date",
+  },
+  {
+    name: "misaLienceexpiry",
+    type: "text",
+    label: "Misa Expiry Date",
+    title: "misaLienceexpiry",
+    errorTitle: "Provide MISA Licence Expiry Date",
+    placeholder: "",
+    variant: "date",
+  },
+];
+
+export const tab5 = [
+  {
+    name: "tin",
+    type: "text",
+    label: "Tin Number",
+    title: "tin",
+    errorTitle: "Provide Tin Number",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "zactaUser",
+    type: "text",
+    label: "ZACTA User",
+    title: "zactaUser",
+    errorTitle: "Provide Zacta User",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "Zactapassword",
+    type: "text",
+    label: "Zacta Password",
+    title: "Zactapassword",
+    errorTitle: "Provide Zacta Password",
+    placeholder: "",
+    variant: "secondary",
+  },
+];
+
+export const tab5_1 = [
+  {
+    name: "qiwaUser",
+    type: "text",
+    label: "Qiwa User",
+    title: "qiwaUser",
+    errorTitle: "Provide Qiwa User",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "qiwaPassword",
+    type: "text",
+    label: "Qiwa Password",
+    title: "qiwaPassword",
+    errorTitle: "Provide Qiwa Password",
+    placeholder: "",
+    variant: "secondary",
+  },
+];
+
+export const tab5_2 = [
+  {
+    name: "muqeemNumber",
+    type: "text",
+    label: "Muqeem User",
+    title: "muqeemNumber",
+    errorTitle: "Provide Muqeem User",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "muqeemEmail",
+    type: "email",
+    label: "Muqeem Email",
+    title: "muqeemEmail",
+    errorTitle: "Provide Muqeem Email",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "muqeemPassword",
+    type: "text",
+    label: "Muqeem Password",
+    title: "muqeemPassword",
+    errorTitle: "Provide Muqeem Password",
+    placeholder: "",
+    variant: "secondary",
+  },
+];
+
+export const LeadModal = [
+  {
+    name: "customerName",
+    type: "text",
+    label: "Customer Name",
+    title: "Customer Name",
+    errorTitle: "Provide Customer Name",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "city",
+    type: "text",
+    label: "City",
+    title: "City",
+    errorTitle: "Provide City Name",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "country",
+    type: "text",
+    label: "Country",
+    title: "Country",
+    errorTitle: "Provide Country Name",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "phoneNumber",
+    type: "text",
+    label: "Phone Number",
+    title: "Phone Number",
+    errorTitle: "Provide Phone Number",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "profession",
+    type: "text",
+    label: "Profession",
+    title: "Profession",
+    errorTitle: "Provide Profession",
+    placeholder: "",
+    variant: "secondary",
+  },
+  {
+    name: "purpose",
+    type: "text",
+    label: "Remarks",
+    title: "Remarks",
+    errorTitle: "Provide Remarks",
+    placeholder: "",
+    variant: "textArea",
+  },
+];
+
+export const CompanyTableDataHeader = [
+  {
+    label: "Company Name",
+    key: "businessInfo.englishName",
+  },
+  {
+    label: "Full Name",
+    key: "name",
+  },
+  {
+    label: "Email Address",
+    key: "businessInfo.email",
+  },
+  {
+    label: "Tracking Number",
+    key: "trackingNumber",
+  },
+  {
+    label: "Created On",
+    key: "createdOn",
+  },
+  {
+    label: "Status",
+    key: "status",
+  },
+  {
+    label: "Last Date",
+    key: "lastDate",
+  },
+  {
+    label: "Action",
+    key: "action",
+  },
+];
+
+export const UserTableDataHeader = [
+  {
+    label: "Full Name",
+    key: "name",
+  },
+  {
+    label: "Email Address",
+    key: "businessInfo.email",
+  },
+  {
+    label: "Role",
+    key: "role",
+  },
+  {
+    label: "Phone Number",
+    key: "phonenumber",
+  },
+  {
+    label: "Action",
+    key: "action",
+  },
+];
