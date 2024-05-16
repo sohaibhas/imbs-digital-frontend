@@ -1,5 +1,5 @@
 import AWS from "aws-sdk";
-import { accessKeyId, secretAccessKey } from "./api";
+import env from "react-dotenv";
 
 export const uploadFileToS3 = (file, setImageLoading, setUploadProgress) => {
   return new Promise((resolve, reject) => {
@@ -7,8 +7,8 @@ export const uploadFileToS3 = (file, setImageLoading, setUploadProgress) => {
     const REGION = "eu-north-1";
 
     AWS.config.update({
-      accessKeyId: accessKeyId,
-      secretAccessKey: secretAccessKey,
+      accessKeyId: env.ACCESSKEYID,
+      secretAccessKey: env.SECRETACCESSKEY,
     });
 
     const s3 = new AWS.S3({
