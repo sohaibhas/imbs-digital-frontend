@@ -2,7 +2,7 @@ window.env = {
   "ACCESSKEYID": "AKIAZI2LDTN6NKVZE5DR",
   "ALLUSERSPROFILE": "C:\\ProgramData",
   "APPDATA": "C:\\Users\\dell\\AppData\\Roaming",
-  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_20288_AAZFQRHFYWMQKAEX",
+  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_6916_STVUQDDEJNHPIIHC",
   "COLOR": "1",
   "COLORTERM": "truecolor",
   "CommonProgramFiles": "C:\\Program Files\\Common Files",

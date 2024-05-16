@@ -132,7 +132,7 @@ const LeadModal = ({ openLead, setOpenLead, selectedData }) => {
                     selectedData.phoneNumber
                   )}
                 </p>
-                <p>
+                {/* <p>
                   <strong>Email:</strong>{" "}
                   {editMode ? (
                     <input
@@ -145,7 +145,7 @@ const LeadModal = ({ openLead, setOpenLead, selectedData }) => {
                   ) : (
                     selectedData.email
                   )}
-                </p>
+                </p> */}
                 <p>
                   <strong>Address:</strong> {selectedData.city},{" "}
                   {selectedData.country}
