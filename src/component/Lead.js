@@ -6,10 +6,10 @@ import React from "react";
 const LeadCommon = ({ leadData, handleOpenLead }) => {
   return (
     <div>
-      <div className="flex flex-wrap gap-9">
+      <div className="flex md:flex-row flex-col flex-wrap gap-9">
         {leadData &&
           leadData.map((tab, index) => (
-            <div className="w-[30%] rounded-xl border-2">
+            <div className="md:w-[30%] rounded-xl border-2">
               {tab.status === 5 && (
                 <CircleCheck
                   fill="green"
@@ -20,10 +20,10 @@ const LeadCommon = ({ leadData, handleOpenLead }) => {
               )}
               <div
                 key={index} // Use a unique key for each item
-                className="p-6  flex cursor-pointer justify-between"
+                className="p-6  flex md:flex-row flex-col cursor-pointer justify-between"
                 onClick={() => handleOpenLead(tab)}
               >
-                <div className="flex w-[300px] flex-col gap-1">
+                <div className="flex md:w-[300px] flex-col gap-1">
                   <h1 className="text-lg font-semibold">{tab.customerName}</h1>
                   <p>{truncate(tab.purpose, { length: 100 })}</p>
                   {/* Truncate the text */}
@@ -32,8 +32,8 @@ const LeadCommon = ({ leadData, handleOpenLead }) => {
                   <p>{moment(tab.createdAt).format("MMMM Do YY")}</p>
                   <p>{moment(tab.createdAt).format("h:mm:ss a")}</p>
                 </div>
-                <div>Role:{tab.role}</div>
               </div>
+              <div className="float-right p-2">Role:{tab.role}</div>
             </div>
           ))}
       </div>

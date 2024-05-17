@@ -19,7 +19,7 @@ const WinLead = () => {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-9">
+      <div className="flex md:flex-row flex-wrap gap-9">
         {leadWinData &&
           leadWinData.map((tab) => {
             const createdAtMoment = moment(tab.createdAt);
@@ -28,7 +28,7 @@ const WinLead = () => {
                 key={tab.id}
                 className="p-6 rounded-xl border-2 flex cursor-pointer justify-between md:w-[30%] lead-item"
               >
-                <div className="flex w-[300px] flex-col gap-1">
+                <div className="flex md:w-[300px] flex-col gap-1">
                   <h1 className="text-lg font-semibold">{tab.customerName}</h1>
                   <p>{truncate(tab.purpose, { length: 100 })}</p>
                 </div>
