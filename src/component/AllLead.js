@@ -5,8 +5,9 @@ import { truncate } from "lodash";
 import moment from "moment";
 import { CircleCheck } from "lucide-react";
 
-const AllLead = ({ handleOpenLead }) => {
+const AllLead = ({ handleOpenLead, updateData  }) => {
   const dispatch = useDispatch();
+
   const leadAllData = useSelector((state) => state.appLead.leadAllData);
 
   console.log("leadAllData");
@@ -19,7 +20,7 @@ const AllLead = ({ handleOpenLead }) => {
 
   useEffect(() => {
     dispatch(getAllLead({ role, username }));
-  }, []);
+  }, [updateData]);
 
   return (
     <div>

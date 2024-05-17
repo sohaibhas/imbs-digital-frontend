@@ -26,7 +26,7 @@ const WinLead = () => {
             return (
               <div
                 key={tab.id}
-                className="p-6 rounded-xl border-2 flex cursor-pointer justify-between w-[30%] lead-item"
+                className="p-6 rounded-xl border-2 flex cursor-pointer justify-between md:w-[30%] lead-item"
               >
                 <div className="flex w-[300px] flex-col gap-1">
                   <h1 className="text-lg font-semibold">{tab.customerName}</h1>

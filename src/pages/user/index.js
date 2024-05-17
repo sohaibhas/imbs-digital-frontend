@@ -11,9 +11,6 @@ const User = () => {
 
   const userlist = useSelector((state) => state.appUser.userlist);
 
-  console.log("userlist");
-  console.log(userlist);
-
   useEffect(() => {
     dispatch(getUserInfo());
   }, [dispatch]);

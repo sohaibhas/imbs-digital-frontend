@@ -14,6 +14,10 @@ const LeadModal = ({ openLead, setOpenLead, selectedData }) => {
     setFormData(selectedData);
   };
 
+  const userDataString = localStorage.getItem("userData");
+  const userData = JSON.parse(userDataString);
+  const role = userData.role;
+
   const handleDelete = async () => {
     await dispatch(deleteLead({ id: selectedData._id }));
     setOpenLead(false);
@@ -76,18 +80,23 @@ const LeadModal = ({ openLead, setOpenLead, selectedData }) => {
                   </>
                 ) : (
                   <>
-                    <button
-                      onClick={handleEdit}
-                      className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-20 h-8 inline-flex justify-center items-center"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={handleDelete}
-                      className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-20 h-8 inline-flex justify-center items-center"
-                    >
-                      Delete
-                    </button>
+                    {role === "admin" && (
+                      <>
+                        <button
+                          onClick={handleEdit}
+                          className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-20 h-8 inline-flex justify-center items-center"
+                        >
+                          Edit
+                        </button>
+
+                        <button
+                          onClick={handleDelete}
+                          className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-20 h-8 inline-flex justify-center items-center"
+                        >
+                          Delete
+                        </button>
+                      </>
+                    )}
                   </>
                 )}
                 <button

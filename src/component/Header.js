@@ -61,14 +61,14 @@ const Header = () => {
         ""
       ) : (
         <div className="p-6 gap-6 flex flex-col bg-[#1e4064] cursor-pointer">
-          <div className="flex items-center justify-between">
-            <div className="flex gap-10">
+          <div className="flex flex-col md:flex-row md:items-center justify-between">
+            <div className="flex items-center gap-10">
               <Link to="/">
                 <img src="./images/imbs_logo.png" width="150" alt="" />
               </Link>
               <div className="border-l-2 border-[#76787a]"></div>
               <h1 className="text-white">
-                <span className="text-[#76787a]">Today</span> <br />
+                <span className="text-[#76787a] text-[10px]">Today</span> <br />
                 {formattedDate}
               </h1>
               <div className="border-l-2 border-[#76787a]"></div>
@@ -77,7 +77,7 @@ const Header = () => {
                 {formattedTime}
               </h2>
             </div>
-            <div>
+            <div className="md:flex items-center">
               <button
                 className="text-white flex items-center gap-4"
                 type="button"
@@ -86,7 +86,7 @@ const Header = () => {
                 <label>{user?.name}</label>
                 <img
                   className="rounded-full w-10 h-10"
-                  src="https://cdn.pixabay.com/photo/2023/04/24/17/01/the-fashion-7948588_1280.jpg"
+                  src="./images/images_empt.png"
                   alt="user"
                 />
                 <ChevronDown color="white" />

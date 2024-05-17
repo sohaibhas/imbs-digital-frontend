@@ -7,38 +7,24 @@ import { getLead } from "../../store/lead";
 import LeadModal from "../../component/LeadModal";
 import LeadCommon from "../../component/Lead";
 import AllLead from "../../component/AllLead";
+import Spinner from "../../component/Spinner";
 
 const Lead = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [loadingFresh, setLoadingFresh] = useState(false);
   const dispatch = useDispatch();
   const leadData = useSelector((state) => state.appLead.leadData);
 
+  const [freshData, setFreshData] = useState(false);
+
   console.log("leadData");
   console.log(leadData);
-
-  // console.log("leadData");
-  // console.log(leadData);
 
   const userDataString = localStorage.getItem("userData");
   const userData = JSON.parse(userDataString);
   const role = userData.role;
   const username = userData.name;
-
-  // const [newData, setNewData] = useState();
-
-  // useEffect(() => {
-  //   if (role === "admin") {
-  //     setNewData(leadData);
-  //   } else if (role === "user") {
-  //     const filteredData = leadData.filter(
-  //       (dat) => dat.role === "user" && dat.username === username
-  //     );
-  //     setNewData(filteredData);
-  //   }
-  // }, [role, leadData, userData]);
-
-  // console.log("newData");
-  // console.log(newData);
 
   const [selectedOption, setSelectedOption] = useState("today");
 
@@ -47,24 +33,46 @@ const Lead = () => {
   };
 
   useEffect(() => {
-    dispatch(getLead({ date: selectedOption, role, username }));
-  }, [selectedOption]);
+    setLoading(true); // Set loading state to true when fetching data
+    setLoadingFresh(true);
+    dispatch(getLead({ date: selectedOption, role, username }))
+      .then(() => setLoadingFresh(false)) // Set loading state to false after data is fetched
+      .catch(() => setLoadingFresh(false)); // Set loading state to false on error
+  }, [selectedOption]); // Fetch data when selectedOption changes
 
   const handleClose = () => {
     setIsOpen(false);
+    setLoading(true); // Set loading state to true before fetching data
+    dispatch(getLead({ date: selectedOption, role, username })).then(() =>
+      setLoading(false)
+    ); // Set loading state to false after data is fetched
   };
 
   const handleModal = () => {
     setIsOpen(true);
   };
-
   const [openLead, setOpenLead] = useState(false);
-
   const [selectedData, setSelectedData] = useState();
+
+  useEffect(() => {
+    setLoading(true);
+    setFreshData(true);
+    dispatch(getLead({ date: selectedOption, role, username })).then(() => {
+      setFreshData(false);
+      setLoading(false);
+    });
+  }, [selectedOption, openLead, selectedData]);
 
   const handleOpenLead = (currentData) => {
     setOpenLead(true);
     setSelectedData(currentData);
+  };
+
+  const updateData = () => {
+    setLoading(true); // Set loading state to true before dispatching action
+    dispatch(getLead({ date: selectedOption, role, username }))
+      .then(() => setLoading(false)) // Set loading state to false after action is completed
+      .catch(() => setLoading(false)); // Set loading state to false on error
   };
 
   return (
@@ -93,9 +101,21 @@ const Lead = () => {
             <option value="last-7-days">Last 7 Days</option>
           </select>
         </div>
-        <LeadCommon leadData={leadData} handleOpenLead={handleOpenLead} />
+        {loading || loadingFresh ? (
+          <Spinner />
+        ) : (
+          <LeadCommon leadData={leadData} handleOpenLead={handleOpenLead} />
+        )}
         <h1 className="text-lg font-medium">All Leads</h1>
-        <AllLead handleOpenLead={handleOpenLead} />
+        {loading ? (
+          <Spinner />
+        ) : (
+          <AllLead
+            freshData={freshData}
+            handleOpenLead={handleOpenLead}
+            updateData={updateData}
+          />
+        )}
       </div>
       <Modal isOpen={isOpen} handleClose={handleClose} />
       <LeadModal
