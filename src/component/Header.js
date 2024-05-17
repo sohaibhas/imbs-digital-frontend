@@ -68,7 +68,7 @@ const Header = () => {
               </Link>
               <div className="border-l-2 border-[#76787a]"></div>
               <h1 className="text-white">
-                <span className="text-[#76787a] text-[10px]">Today</span> <br />
+                <span className="text-[#76787a] md:text-[15px] text-[10px]">Today</span> <br />
                 {formattedDate}
               </h1>
               <div className="border-l-2 border-[#76787a]"></div>

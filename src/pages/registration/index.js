@@ -66,6 +66,7 @@ const Registration = () => {
                     </div>
                   ))}
                   <ModalSelect
+                    title={"Choose Role"}
                     name={"role"}
                     register={register}
                     options={options}

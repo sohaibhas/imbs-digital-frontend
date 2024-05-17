@@ -110,6 +110,7 @@ const Modal = ({ isOpen, handleClose }) => {
                       name="status"
                       register={register}
                       options={options}
+                      title={"Rate Your Experience"}
                     />
                     {errors.category && <p>This field is required</p>}
                   </div>
