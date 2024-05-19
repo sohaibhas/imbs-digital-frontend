@@ -18,21 +18,24 @@ const WinLead = () => {
   }, []);
 
   return (
-    <div>
-      <div className="flex md:flex-row flex-wrap gap-9">
+    <div className="container mx-auto">
+      <div className="flex flex-wrap gap-9">
         {leadWinData &&
           leadWinData.map((tab) => {
             const createdAtMoment = moment(tab.createdAt);
             return (
               <div
                 key={tab.id}
-                className="p-6 rounded-xl border-2 flex cursor-pointer justify-between md:w-[30%] lead-item"
+                className="p-6 pb-0 rounded-xl border-2 cursor-pointer flex flex-col md:flex-row md:w-[30%] lead-item"
               >
-                <div className="flex md:w-[300px] flex-col gap-1">
+                <div className="flex-grow flex flex-col gap-1">
                   <h1 className="text-lg font-semibold">{tab.customerName}</h1>
                   <p>{truncate(tab.purpose, { length: 100 })}</p>
+                  <div className="text-[12px] font-bold p-1 mt-auto">
+                    {tab.username}
+                  </div>
                 </div>
-                <div className="flex text-sm flex-col">
+                <div className="flex-shrink-0 text-sm text-right md:text-left">
                   <p>{createdAtMoment.format("MMMM Do YY")}</p>
                   <p>{createdAtMoment.format("h:mm:ss a")}</p>
                 </div>
