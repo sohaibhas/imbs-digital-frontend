@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { registerUser } from "../../store/user";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
@@ -11,6 +11,7 @@ import ModalSelect from "../../component/Select";
 
 const Registration = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -21,6 +22,7 @@ const Registration = () => {
   const onSubmit = (data) => {
     console.log(data);
     dispatch(registerUser(data));
+    navigate("/");
   };
 
   const options = [
@@ -71,32 +73,7 @@ const Registration = () => {
                     register={register}
                     options={options}
                   />
-                  {/* <div class="relative">
-                    <InputText
-                      label={"Email"}
-                      name={"email"}
-                      type={"email"}
-                      placeholder={"123@ex.com"}
-                      register={register}
-                      errors={errors}
-                      title={"email"}
-                      errorTitle={"Email Should be Must"}
-                      variant={"primary"}
-                    />
-                  </div>
-                  <div class="relative">
-                    <InputText
-                      label={"Password"}
-                      name={"password"}
-                      type={"password"}
-                      placeholder={"Password"}
-                      register={register}
-                      errors={errors}
-                      title={"password"}
-                      errorTitle={"Password Should be Must"}
-                      variant={"primary"}
-                    />
-                  </div> */}
+
                   <div class="relative">
                     <button
                       type="submit"
@@ -105,14 +82,14 @@ const Registration = () => {
                       Submit
                     </button>
                   </div>
-                  <div className="flex items-center justify-center">
+                  {/* <div className="flex items-center justify-center">
                     <p className="text-sm">
                       Already have an account?
                       <strong>
                         <Link to="/login">Login here </Link>
                       </strong>
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </form>

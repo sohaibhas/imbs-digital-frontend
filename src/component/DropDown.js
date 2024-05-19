@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const DropDown = ({ isOpen, setIsOpen, EditComp, handleDelete }) => {
+const DropDown = ({ isOpen, setIsOpen, updateUser,EditComp, handleDelete }) => {
   return (
     <>
       {isOpen && (
@@ -10,17 +10,17 @@ const DropDown = ({ isOpen, setIsOpen, EditComp, handleDelete }) => {
             <Link to={EditComp}>
               <button
                 className="block w-full px-4 py-2 text-left text-gray-800 hover:bg-gray-100"
-                onClick={() => console.log("Edit clicked")}
+                onClick={updateUser}
               >
                 Edit
               </button>
             </Link>
-            <button
+            {/* <button
               className="block w-full px-4 py-2 text-left text-gray-800 hover:bg-gray-100"
               onClick={() => console.log("View clicked")}
             >
               View
-            </button>
+            </button> */}
             <button
               className="block w-full px-4 py-2 text-left text-gray-800 hover:bg-gray-100"
               onClick={handleDelete}

@@ -2,7 +2,7 @@ window.env = {
   "ACCESSKEYID": "AKIAZI2LDTN6NKVZE5DR",
   "ALLUSERSPROFILE": "C:\\ProgramData",
   "APPDATA": "C:\\Users\\dell\\AppData\\Roaming",
-  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_6468_DLRYTIIPETCSVFUN",
+  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_15832_URZKJWJWBFWVYIMK",
   "COLOR": "1",
   "COLORTERM": "truecolor",
   "CommonProgramFiles": "C:\\Program Files\\Common Files",
@@ -82,7 +82,7 @@ window.env = {
   "VSCODE_GIT_ASKPASS_NODE": "C:\\Users\\dell\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
   "VSCODE_GIT_IPC_HANDLE": "\\\\.\\pipe\\vscode-git-bd245e0368-sock",
   "VSCODE_INJECTION": "1",
-  "VSCODE_NONCE": "5ac2c240-cdb0-4f5d-af42-9e9781a4778f",
+  "VSCODE_NONCE": "6bf316c6-81d0-4f3d-b09f-d7692a20f9da",
   "windir": "C:\\Windows",
   "ZES_ENABLE_SYSMAN": "1"
 };

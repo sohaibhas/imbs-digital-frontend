@@ -11,22 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 import User from "./pages/user"; // Assuming User page is for managing other users
 import Business from "./pages/business";
 import Company from "./pages/company";
+import PrivateRoute from "./utils/PrivateRoute";
 
-// Enhanced PrivateRoute component with role checks
-function PrivateRoute({ element, roles = ["admin"] }) {
-  // Default to admin only
-  const isAuthenticated = useSelector((state) => state.appUser.isAuthenticated);
-  const userDataString = localStorage.getItem("userData");
-  const userData = JSON.parse(userDataString);
-  const userRole = userData ? userData.role : null; // Set userRole to null if userData is absent
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  const isAuthorized = roles.includes(userRole);
-  return isAuthorized ? element : <Navigate to="/not-found" replace />; // Redirect to not-found for unauthorized roles
-}
 
 function App() {
   const isAuthenticated = useSelector((state) => state.appUser.isAuthenticated);
@@ -48,7 +34,7 @@ function App() {
         <Route
           path="/register"
           element={
-            isAuthenticated ? <Navigate to="/" replace /> : <Registration />
+            <PrivateRoute element={<Registration />} roles={["admin"]} />
           }
         />
         <Route

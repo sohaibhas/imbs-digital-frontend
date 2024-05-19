@@ -66,6 +66,37 @@ export const deleteUser = createAsyncThunk(
   }
 );
 
+export const updateUser = createAsyncThunk(
+  "appUser/updateUser",
+  async ({ userId, data }, { rejectWithValue }) => {
+    console.log("user id from api", userId);
+    try {
+      const response = await api.put(`/users/${userId}`, data);
+      toast.success("User Update Succesfully");
+      return response.data;
+    } catch (error) {
+      console.log("err", error);
+      toast.error(error.response.data);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const getUserById = createAsyncThunk(
+  "appUser/getUserById",
+  async (userId, { rejectWithValue }) => {
+    console.log("user id from api", userId);
+    try {
+      const response = await api.get(`/users/${userId}`);
+      return response.data;
+    } catch (error) {
+      console.log("err", error);
+      toast.error(error.response.data.error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const logoutUser = createAsyncThunk(
   "appUser/logoutUser",
   async (_, { rejectWithValue }) => {
@@ -86,6 +117,8 @@ export const appUserSlice = createSlice({
   initialState: {
     data: JSON.parse(localStorage.getItem("userData")) || null,
     userlist: [],
+    updateUserInfo: [],
+    singleUser: [],
     isAuthenticated: !!localStorage.getItem("auth-token"), // Check if token exists in local storage
   },
   reducers: {},
@@ -97,6 +130,13 @@ export const appUserSlice = createSlice({
     builder.addCase(loginUser.fulfilled, (state, action) => {
       state.data = action.payload.user;
       state.isAuthenticated = true;
+    });
+    builder.addCase(updateUser.fulfilled, (state, action) => {
+      state.updateUserInfo = action.payload.user;
+      state.isAuthenticated = true;
+    });
+    builder.addCase(getUserById.fulfilled, (state, action) => {
+      state.singleUser = action.payload;
     });
     builder.addCase(getUserInfo.fulfilled, (state, action) => {
       state.userlist = action.payload;

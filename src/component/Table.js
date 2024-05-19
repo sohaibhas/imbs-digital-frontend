@@ -10,10 +10,14 @@ import {
 import { deleteUser, getUserInfo } from "../store/user";
 import { toast } from "react-toastify";
 import Spinner from "./Spinner";
+import UpdateUser from "../pages/user/updateUser";
 
 const Table = ({ companyInfo, userlist, CompanyTableDataHeader }) => {
   const [isOpenMap, setIsOpenMap] = useState({});
   const [isLoading, setIsLoading] = useState(true); // Loading state
+
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
   const dispatch = useDispatch();
   const companyData = useSelector((state) => state.appBusiness.companyData);
@@ -44,7 +48,6 @@ const Table = ({ companyInfo, userlist, CompanyTableDataHeader }) => {
       toast.error("You Cannot Delete Yourself");
       return; // Prevent further execution
     }
-
     dispatch(deleteUser(userId));
     dispatch(getUserInfo());
   };
@@ -56,8 +59,24 @@ const Table = ({ companyInfo, userlist, CompanyTableDataHeader }) => {
     }));
   };
 
-  console.log("businessInfo");
-  console.log(companyInfo);
+  const handleUpdateUser = (userId) => {
+    setSelectedUserId(userId);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedUserId(null);
+  };
+
+  const handleUserUpdate = (updatedUser) => {
+    // Handle the updated user data (e.g., refresh the user list)
+    console.log("User updated:", updatedUser);
+  };
+
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, [handleCloseModal]);
 
   return (
     <div className="overflow-x-auto shadow-md sm:rounded-lg">
@@ -135,6 +154,7 @@ const Table = ({ companyInfo, userlist, CompanyTableDataHeader }) => {
                     <span onClick={() => toggleDropdown(index)}>
                       <EllipsisVertical />
                       <DropDown
+                        updateUser={() => handleUpdateUser(data._id)}
                         handleDelete={() => handleDeleteUser(data._id)}
                         isOpen={isOpenMap[index]}
                         setIsOpen={(isOpen) =>
@@ -148,6 +168,13 @@ const Table = ({ companyInfo, userlist, CompanyTableDataHeader }) => {
             </tbody>
           )}
         </table>
+      )}
+      {isModalOpen && (
+        <UpdateUser
+          userId={selectedUserId}
+          onClose={handleCloseModal}
+          onUpdate={handleUserUpdate}
+        />
       )}
     </div>
   );
