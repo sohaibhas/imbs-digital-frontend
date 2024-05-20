@@ -18,7 +18,7 @@ const WinLead = () => {
   }, []);
 
   return (
-    <div className="container mx-auto">
+    <div className="container">
       <div className="flex flex-wrap gap-9">
         {leadWinData &&
           leadWinData.map((tab) => {

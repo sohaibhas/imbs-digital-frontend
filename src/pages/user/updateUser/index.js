@@ -4,7 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserById, getUserInfo, updateUser } from "../../../store/user";
 
 const UpdateUser = ({ userId, onClose, onUpdate }) => {
-  const { register, handleSubmit, reset, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    setValue,
+  } = useForm();
 
   const dispatch = useDispatch();
   const singleUser = useSelector((state) => state.appUser.singleUser);
@@ -12,6 +18,7 @@ const UpdateUser = ({ userId, onClose, onUpdate }) => {
   useEffect(() => {
     dispatch(getUserById(userId));
   }, [dispatch, userId]);
+  
 
   useEffect(() => {
     if (singleUser) {
@@ -19,11 +26,12 @@ const UpdateUser = ({ userId, onClose, onUpdate }) => {
       setValue("email", singleUser.email);
       setValue("phoneNumber", singleUser.phoneNumber);
       setValue("role", singleUser.role);
-      setValue("password", singleUser.password);
     }
   }, [singleUser, setValue]);
 
   const onSubmit = async (data) => {
+    console.log("data");
+    console.log(data);
     try {
       dispatch(updateUser({ userId, data }));
       onClose();
@@ -107,9 +115,17 @@ const UpdateUser = ({ userId, onClose, onUpdate }) => {
               type="password"
               name="password"
               placeholder="Password"
-              {...register("password")}
+              {...register("password", { required: true })}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
             />
+            {errors?.password?.type === "required" && (
+              <p
+                className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert"
+              >
+                {`Password is required`}
+              </p>
+            )}
           </div>
           <div className="flex justify-end">
             <button

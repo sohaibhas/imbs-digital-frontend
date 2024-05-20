@@ -19,7 +19,7 @@ const AllLead = ({ handleOpenLead, updateData }) => {
   }, [dispatch, role, username, updateData]);
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container px-4">
       <div className="flex flex-wrap gap-9">
         {leadAllData &&
           leadAllData.map((tab, index) => (

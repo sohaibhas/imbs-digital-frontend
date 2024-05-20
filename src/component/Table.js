@@ -46,10 +46,15 @@ const Table = ({ companyInfo, userlist, CompanyTableDataHeader }) => {
 
     if (userId === parentID) {
       toast.error("You Cannot Delete Yourself");
-      return; // Prevent further execution
+      return;
     }
-    dispatch(deleteUser(userId));
-    dispatch(getUserInfo());
+    dispatch(deleteUser(userId))
+      .then(() => {
+        dispatch(getUserInfo());
+      })
+      .catch((error) => {
+        console.error("Error deleting user:", error);
+      });
   };
 
   const toggleDropdown = (index) => {
@@ -76,7 +81,7 @@ const Table = ({ companyInfo, userlist, CompanyTableDataHeader }) => {
 
   useEffect(() => {
     dispatch(getUserInfo());
-  }, [handleCloseModal]);
+  }, []);
 
   return (
     <div className="overflow-x-auto shadow-md sm:rounded-lg">
