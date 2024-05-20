@@ -149,7 +149,7 @@ export const tab2 = [
   {
     name: "companyNameEnglish",
     type: "text",
-    label: "Name (Arabic)",
+    label: "Company Name (English)",
     title: "companyNameEnglish",
     errorTitle: "English Name Should be Must",
     placeholder: "",
