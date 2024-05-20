@@ -441,6 +441,10 @@ export const CompanyTableDataHeader = [
     key: "businessInfo.email",
   },
   {
+    label: "Contact Number",
+    key: "phoneNumberKsa",
+  },
+  {
     label: "Tracking Number",
     key: "trackingNumber",
   },

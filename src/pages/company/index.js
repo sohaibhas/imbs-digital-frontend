@@ -37,9 +37,12 @@ const Company = () => {
   const handleExportExcel = async () => {
     try {
       // Make a GET request to the /business/excel endpoint
-      const response = await axios.get("http://localhost:5000/api/company/business/excel", {
-        responseType: "blob", // Set the response type to blob
-      });
+      const response = await axios.get(
+        "http://localhost:5000/api/company/business/excel",
+        {
+          responseType: "blob", // Set the response type to blob
+        }
+      );
 
       // Create a temporary URL for the Blob data
       const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -64,7 +67,12 @@ const Company = () => {
   return (
     <div>
       <div className="p-6">
-        <button onClick={handleExportExcel}>Export to Excel</button>
+        <button
+          className="p-2 bg-orange-200 rounded-lg"
+          onClick={handleExportExcel}
+        >
+          Export to Excel
+        </button>
         <div className="p-6 gap-3 flex items-end justify-end">
           <Link to="/addnewbusiness">
             <Button
@@ -75,7 +83,7 @@ const Company = () => {
           </Link>
         </div>
         <div>
-          <TableTop />
+          {/* <TableTop /> */}
           <Table
             CompanyTableDataHeader={CompanyTableDataHeader}
             companyInfo={companyInfo}

@@ -13,3 +13,8 @@
     flex-direction: row;
   }
 }
+
+.not-found {
+  color: red;
+  font-weight: bold;
+}

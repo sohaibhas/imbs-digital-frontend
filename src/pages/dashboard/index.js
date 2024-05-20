@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBusinessInfo, getPersonalInfo } from "../../store/business";
 import WinLead from "../../component/WinLead";
 import Spinner from "../../component/Spinner";
+import { getByFollowUp } from "../../store/lead";
+import Follow from "../../component/Follow";
 
 const Dashboard = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -50,12 +52,14 @@ const Dashboard = () => {
               icon={<Plus size={16} />}
             />
           </div>
-          <h1 className="text-lg font-medium pb-3">Lead Converted</h1>
+          <h1 className="text-lg font-medium pb-3 p-2">Lead Converted</h1>
           <WinLead />
+          <h1 className="text-lg font-medium pb-3 p-2">Follow Up</h1>
+          <Follow />
           {role === "admin" && (
             <>
               {" "}
-              <h1 className="text-lg font-medium py-6"> Business List</h1>
+              <h1 className="text-lg font-medium py-6 p-2"> Business List</h1>
               <div className="flex md:flex-row flex-col gap-20 h-44">
                 <div>
                   <h1 className="p-2 text-lg font-semibold">In-Progress</h1>

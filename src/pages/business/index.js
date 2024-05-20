@@ -176,7 +176,7 @@ const Business = () => {
                     View
                   </button>
                 ) : (
-                  <h1>File Not Found</h1>
+                  <h1 className="not-found">File Not Found</h1>
                 )}
               </div>
             )}
@@ -204,7 +204,7 @@ const Business = () => {
                     View
                   </button>
                 ) : (
-                  <h1>File Not Found</h1>
+                  <h1 className="not-found">File Not Found</h1>
                 )}
               </div>
             )}
@@ -234,7 +234,7 @@ const Business = () => {
                     View
                   </button>
                 ) : (
-                  <h1>File Not Found</h1>
+                  <h1 className="not-found">File Not Found</h1>
                 )}
               </div>
             )}
@@ -262,7 +262,7 @@ const Business = () => {
                     View
                   </button>
                 ) : (
-                  <h1>File Not Found</h1>
+                  <h1 className="not-found">File Not Found</h1>
                 )}
               </div>
             )}

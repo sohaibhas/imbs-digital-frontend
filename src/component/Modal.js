@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 import { addLead, getLead } from "../store/lead";
 import Spinner from "./Spinner";
 
-
 const Modal = ({ isOpen, handleClose }) => {
   const dispatch = useDispatch();
   const {
@@ -18,6 +17,9 @@ const Modal = ({ isOpen, handleClose }) => {
   } = useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [isAdding, setIsAdding] = useState(false); // State to track if adding new lead
+
+  const [followUp, setFollowUp] = useState(false);
+  const [followUpDate, setFollowUpDate] = useState("");
 
   const options = [
     { value: "1", label: "1" },
@@ -36,7 +38,7 @@ const Modal = ({ isOpen, handleClose }) => {
       const role = userData.role;
       setIsLoading(true);
       setIsAdding(true); // Set isAdding to true when adding new lead
-      dispatch(addLead({ ...data, username: username, role: role }))
+      dispatch(addLead({ ...data, username, role, followUp, followUpDate }))
         .then(() => {
           dispatch(getLead());
           handleClose();
@@ -114,6 +116,32 @@ const Modal = ({ isOpen, handleClose }) => {
                     />
                     {errors.category && <p>This field is required</p>}
                   </div>
+                  <div>
+                    <div className="mt-4">
+                      <label className="flex items-center">
+                        <input
+                          type="checkbox"
+                          checked={followUp}
+                          onChange={() => setFollowUp(!followUp)}
+                          className="mr-2"
+                        />
+                        Follow Up
+                      </label>
+                      {followUp && (
+                        <div className="mt-2">
+                          <label>
+                            Follow Up Date:
+                            <input
+                              type="datetime-local"
+                              value={followUpDate}
+                              onChange={(e) => setFollowUpDate(e.target.value)}
+                              className="w-full p-1 border border-gray-300 rounded mt-1"
+                            />
+                          </label>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               )}
               <div className="float-right">
@@ -131,9 +159,9 @@ const Modal = ({ isOpen, handleClose }) => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
                     Add new Lead

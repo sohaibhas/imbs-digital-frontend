@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getWinnerLead } from "../store/lead";
+import { getByFollowUp, getWinnerLead } from "../store/lead";
 import { truncate } from "lodash";
 import moment from "moment";
 
-const WinLead = () => {
+const Follow = () => {
   const dispatch = useDispatch();
-  const leadWinData = useSelector((state) => state.appLead.leadWinData);
+  const followUp = useSelector((state) => state.appLead.followUp);
 
   const userDataString = localStorage.getItem("userData");
   const userData = JSON.parse(userDataString);
@@ -14,15 +14,17 @@ const WinLead = () => {
   const username = userData.name;
 
   useEffect(() => {
-    dispatch(getWinnerLead({ role, username }));
+    dispatch(getByFollowUp({ role, username }));
   }, []);
 
   return (
-    <div className="container">
-      <div className="flex flex-wrap gap-9">
-        {leadWinData && leadWinData.length > 0 ? (
-          leadWinData.map((tab) => {
-            const createdAtMoment = moment(tab.createdAt);
+    <div className="container mx-auto px-4">
+      <div className="flex flex-wrap gap-4 md:gap-8 lg:gap-12">
+        {followUp && followUp.length > 0 ? (
+          followUp.map((tab) => {
+            const formattedDate = moment(tab.followUpDate).format(
+              "MMMM Do YYYY"
+            );
             return (
               <div
                 key={tab.id}
@@ -31,23 +33,24 @@ const WinLead = () => {
                 <div className="flex-grow flex flex-col gap-1">
                   <h1 className="text-lg font-semibold">{tab.customerName}</h1>
                   <p>{truncate(tab.purpose, { length: 100 })}</p>
-                  <div className="text-[12px] font-bold p-1 mt-auto">
+                  <div className="text-[12px] font-bold mt-auto">
                     {tab.username}
                   </div>
                 </div>
-                <div className="flex-shrink-0 text-sm text-right md:text-left">
-                  <p>{createdAtMoment.format("MMMM Do YY")}</p>
-                  <p>{createdAtMoment.format("h:mm:ss a")}</p>
+                <div className="flex-shrink-0 text-[12px] font-bold text-right md:text-left">
+                  Follow Up Date:
+                  <p> {formattedDate}</p>
+                  <p>{moment(tab.followUpDate).format("h:mm:ss a")}</p>
                 </div>
               </div>
             );
           })
         ) : (
-          <p>No winning leads found</p>
+          <p>No follow-up data available</p>
         )}
       </div>
     </div>
   );
 };
 
-export default WinLead;
+export default Follow;

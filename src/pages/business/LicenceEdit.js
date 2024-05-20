@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { tab1, tab2, tab3, tab4, tab5, tab5_1, tab5_2 } from "../../constant";
+import {  tab4 } from "../../constant";
 import InputText from "../../component/InputText";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { getCompanyInfo, updateCompanyInfo } from "../../store/business";
 import { useParams } from "react-router-dom";
 import UploadFile from "../../component/aws/UploadFile";
-import { ToastContainer } from "react-toastify";
 
 const LicenceEdit = () => {
   const [infoBus, setInfoBus] = useState();
@@ -152,7 +151,7 @@ const LicenceEdit = () => {
                     View
                   </button>
                 ) : (
-                  <h1>File Not Found</h1>
+                  <h1 className="not-found">File Not Found</h1>
                 )}
               </div>
             )}

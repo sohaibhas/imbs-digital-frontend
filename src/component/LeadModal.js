@@ -1,17 +1,22 @@
 import moment from "moment";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteLead, getLead, updateLead } from "../store/lead";
+import { addChat, deleteLead, getLead, updateLead } from "../store/lead";
 
 const LeadModal = ({ openLead, setOpenLead, selectedData }) => {
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState(selectedData);
+  const [message, setMessage] = useState("");
 
   const dispatch = useDispatch();
 
   const handleEdit = () => {
     setEditMode(true);
     setFormData(selectedData);
+  };
+
+  const handleNewChat = async () => {
+    await dispatch(addChat({ id: selectedData._id, data: { message } }));
   };
 
   const userDataString = localStorage.getItem("userData");
@@ -29,8 +34,6 @@ const LeadModal = ({ openLead, setOpenLead, selectedData }) => {
   const handleSave = () => {
     dispatch(updateLead({ id: formData._id, data: formData }));
     dispatch(getLead());
-    console.log("formData");
-    console.log(formData);
     setEditMode(false);
     setOpenLead(false);
   };
@@ -38,15 +41,13 @@ const LeadModal = ({ openLead, setOpenLead, selectedData }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
-    // Update selectedData.purpose directly
   };
 
   return (
     openLead && (
       <div className="fixed top-0 left-0 bottom-0 right-0 flex justify-center items-center z-50">
         <div className="absolute bg-black opacity-60 inset-0"></div>
-        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 w-[46%] max-h-[600px] overflow-y-scroll p-6 md:p-5">
+        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 md:p-8">
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-2xl font-bold">
@@ -62,7 +63,7 @@ const LeadModal = ({ openLead, setOpenLead, selectedData }) => {
                   selectedData.customerName
                 )}
               </h1>
-              <div>
+              <div className="flex space-x-2">
                 {editMode ? (
                   <>
                     <button
@@ -88,7 +89,6 @@ const LeadModal = ({ openLead, setOpenLead, selectedData }) => {
                         >
                           Edit
                         </button>
-
                         <button
                           onClick={handleDelete}
                           className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-20 h-8 inline-flex justify-center items-center"
@@ -124,7 +124,7 @@ const LeadModal = ({ openLead, setOpenLead, selectedData }) => {
                 </button>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <h2 className="text-lg font-semibold">Contact Information</h2>
                 <p>
@@ -141,24 +141,37 @@ const LeadModal = ({ openLead, setOpenLead, selectedData }) => {
                     selectedData.phoneNumber
                   )}
                 </p>
-                {/* <p>
-                  <strong>Email:</strong>{" "}
-                  {editMode ? (
-                    <input
-                      type="text"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full p-1 border border-gray-300 rounded"
-                    />
-                  ) : (
-                    selectedData.email
-                  )}
-                </p> */}
                 <p>
                   <strong>Address:</strong> {selectedData.city},{" "}
                   {selectedData.country}
                 </p>
+                <div className="mt-4">
+                  <h2 className="text-lg font-semibold">Purpose</h2>
+                  {editMode ? (
+                    <textarea
+                      type="text"
+                      name="purpose"
+                      rows="2"
+                      value={formData.purpose}
+                      onChange={handleChange}
+                      className="w-full p-1 border border-gray-300 rounded"
+                    />
+                  ) : (
+                    <>
+                      <p>{selectedData.purpose}</p>
+                      {selectedData.chat.map((chat, index) => (
+                        <React.Fragment key={index}>
+                          <p className="font-bold">
+                            {moment(chat?.createdAt).format(
+                              "MMMM Do YYYY, h:mm:ss a"
+                            )}
+                          </p>
+                          <p>{chat?.message}</p>
+                        </React.Fragment>
+                      ))}
+                    </>
+                  )}
+                </div>
               </div>
               <div>
                 <h2 className="text-lg font-semibold">Lead Details</h2>
@@ -196,22 +209,24 @@ const LeadModal = ({ openLead, setOpenLead, selectedData }) => {
                     "MMMM Do YYYY, h:mm:ss a"
                   )}
                 </p>
+                <div className="mt-4">
+                  <h2 className="text-lg font-semibold">New Update</h2>
+                  {!editMode && (
+                    <input
+                      type="text"
+                      name="text"
+                      onChange={(e) => setMessage(e.target.value)}
+                      className="w-full p-1 border border-gray-300 rounded"
+                    />
+                  )}
+                  <button
+                    onClick={handleNewChat}
+                    className="w-full mt-4 p-2 border-2 cursor-pointer rounded-lg bg-gray-200 hover:bg-gray-300"
+                  >
+                    Submit
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="mt-4">
-              <h2 className="text-lg font-semibold">Purpose</h2>
-              {editMode ? (
-                <textarea
-                  type="text"
-                  name="purpose"
-                  rows="2"
-                  value={formData.purpose}
-                  onChange={handleChange}
-                  className="w-full p-1 border border-gray-300 rounded"
-                />
-              ) : (
-                <p>{selectedData.purpose}</p>
-              )}
             </div>
           </div>
         </div>

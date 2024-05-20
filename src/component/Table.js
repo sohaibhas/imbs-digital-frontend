@@ -114,6 +114,9 @@ const Table = ({ companyInfo, userlist, CompanyTableDataHeader }) => {
                     {data.firstname} {data.lastname}
                   </td>
                   <td className="px-6 py-4">{data.businessInfo.email}</td>
+                  <td className="px-6 py-4">
+                    {data.phoneNumberKsa}
+                  </td>
                   <td className="px-6 py-4">{data.trackingNumber}</td>
                   <td className="px-6 py-4">23/9/2030</td>
                   <td className="px-6 py-4">{data.status}</td>

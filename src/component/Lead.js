@@ -37,7 +37,7 @@ const LeadCommon = ({ leadData, handleOpenLead }) => {
                     <p>{moment(tab.createdAt).format("h:mm:ss a")}</p>
                   </div>
                   <div className="text-[12px] font-bold p-1">
-                    Role: {tab.role}
+                    Role: {tab.username}
                   </div>
                 </div>
               </div>
