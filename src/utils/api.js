@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:5000/api";
+// const baseURL = "http://localhost:5000/api";
 // const baseURL = "http://13.60.49.46:5000/api";
-// const baseURL = "https://imbs-backend.onrender.com/api";
+const baseURL = "https://imbs-backend.onrender.com/api";
 
 const api = axios.create({
   baseURL: baseURL,
