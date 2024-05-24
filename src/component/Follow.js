@@ -18,7 +18,7 @@ const Follow = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container px-4">
       <div className="flex flex-wrap gap-4 md:gap-8 lg:gap-12">
         {followUp && followUp.length > 0 ? (
           followUp.map((tab) => {
