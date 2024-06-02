@@ -93,12 +93,20 @@ const CompanyEdit = () => {
     window.open(downloadLink, "_blank");
   };
 
+  const userDataString = localStorage.getItem("userData");
+  const userData = JSON.parse(userDataString);
+  const role = userData?.role;
+
   return (
     <div>
-      {!editModeCompany && (
-        <button className="float-right" onClick={handleEditBusiness}>
-          Edit
-        </button>
+      {role !== "pak" && (
+        <>
+          {!editModeCompany && (
+            <button className="float-right" onClick={handleEditBusiness}>
+              Edit
+            </button>
+          )}
+        </>
       )}
 
       {editModeCompany && (

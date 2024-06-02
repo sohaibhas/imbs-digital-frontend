@@ -1,7 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const DropDown = ({ isOpen, setIsOpen, updateUser,EditComp, handleDelete }) => {
+const DropDown = ({
+  isOpen,
+  setIsOpen,
+  updateUser,
+  EditComp,
+  handleDelete,
+}) => {
+  const userDataString = localStorage.getItem("userData");
+  const userData = JSON.parse(userDataString);
+  const role = userData?.role;
+
   return (
     <>
       {isOpen && (
@@ -21,12 +31,14 @@ const DropDown = ({ isOpen, setIsOpen, updateUser,EditComp, handleDelete }) => {
             >
               View
             </button> */}
-            <button
-              className="block w-full px-4 py-2 text-left text-gray-800 hover:bg-gray-100"
-              onClick={handleDelete}
-            >
-              Delete
-            </button>
+            {role !== "pak" && (
+              <button
+                className="block w-full px-4 py-2 text-left text-gray-800 hover:bg-gray-100"
+                onClick={handleDelete}
+              >
+                Delete
+              </button>
+            )}
           </div>
         </div>
       )}

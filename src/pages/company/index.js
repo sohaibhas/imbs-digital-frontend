@@ -64,24 +64,32 @@ const Company = () => {
     }
   };
 
+  const userDataString = localStorage.getItem("userData");
+  const userData = JSON.parse(userDataString);
+  const role = userData?.role;
+
   return (
     <div>
       <div className="p-6">
-        <button
-          className="p-2 bg-orange-200 rounded-lg"
-          onClick={handleExportExcel}
-        >
-          Export to Excel
-        </button>
-        <div className="p-6 gap-3 flex items-end justify-end">
-          <Link to="/addnewbusiness">
-            <Button
-              variant="primary"
-              title="Add Business"
-              icon={<Plus size={16} />}
-            />
-          </Link>
-        </div>
+        {role !== "pak" && (
+          <>
+            <button
+              className="p-2 bg-orange-200 rounded-lg"
+              onClick={handleExportExcel}
+            >
+              Export to Excel
+            </button>
+            <div className="p-6 gap-3 flex items-end justify-end">
+              <Link to="/addnewbusiness">
+                <Button
+                  variant="primary"
+                  title="Add Business"
+                  icon={<Plus size={16} />}
+                />
+              </Link>
+            </div>
+          </>
+        )}
         <div>
           {/* <TableTop /> */}
           <Table

@@ -117,13 +117,21 @@ const Business = () => {
     window.open(downloadLink, "_blank");
   };
 
+  const userDataString = localStorage.getItem("userData");
+  const userData = JSON.parse(userDataString);
+  const role = userData?.role;
+
   return (
     <div className="p-16">
       <ToastContainer />
-      {!editModePersonal && (
-        <button className="float-right" onClick={handleEditPersonal}>
-          Edit
-        </button>
+      {role !== "pak" && (
+        <>
+          {!editModePersonal && (
+            <button className="float-right" onClick={handleEditPersonal}>
+              Edit
+            </button>
+          )}
+        </>
       )}
       {editModePersonal && (
         <button className="float-right" onClick={handleSavePersonal}>
@@ -272,8 +280,12 @@ const Business = () => {
       </div>
       <CompanyEdit />
       <ParentEdit />
-      <LicenceEdit />
-      <PortalEdit />
+      {role !== "pak" && (
+        <>
+          <LicenceEdit />
+          <PortalEdit />{" "}
+        </>
+      )}
     </div>
   );
 };

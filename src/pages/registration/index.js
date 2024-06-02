@@ -28,6 +28,7 @@ const Registration = () => {
   const options = [
     { value: "admin", label: "admin" },
     { value: "user", label: "user" },
+    { value: "pak", label: "pak" },
   ];
 
   return (

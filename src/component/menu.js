@@ -10,7 +10,7 @@ const Menu = () => {
     <div>
       <ul className="flex flex-row gap-10 font-semibold text-white">
         <Link to="/">Dashboard</Link>
-        {role === "admin" && <Link to="/business">Business</Link>}
+        {(role === "admin" || role === "pak") && <Link to="/business">Business</Link>}
         <Link to="/leads">Lead</Link>
         {role === "admin" && <Link to="/users">User</Link>}
       </ul>

@@ -83,6 +83,24 @@ const Table = ({ companyInfo, userlist, CompanyTableDataHeader }) => {
     dispatch(getUserInfo());
   }, []);
 
+  console.log("companyInfo");
+  console.log(companyInfo);
+
+  const userDataString = localStorage.getItem("userData");
+  const userData = JSON.parse(userDataString);
+  const role = userData?.role;
+
+  const [filterStatus, setFilterStatus] = useState("In Progress");
+
+  const filterDataByStatus = (status) => {
+    return companyInfo?.filter((item) => item.status === status);
+  };
+
+  const filteredData = filterDataByStatus(filterStatus);
+
+  console.log("filteredData");
+  console.log(filteredData);
+
   return (
     <div className="overflow-x-auto shadow-md sm:rounded-lg">
       {isLoading ? ( // Show loading indicator if data is loading
@@ -102,47 +120,52 @@ const Table = ({ companyInfo, userlist, CompanyTableDataHeader }) => {
           </thead>
           {companyInfo && (
             <tbody>
-              {companyInfo?.map((data, index) => (
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    {data.businessInfo.companyNameEnglish}
-                  </th>
-                  <td className="px-6 py-4">
-                    {data.firstname} {data.lastname}
-                  </td>
-                  <td className="px-6 py-4">{data.businessInfo.email}</td>
-                  <td className="px-6 py-4">
-                    {data.phoneNumberKsa}
-                  </td>
-                  <td className="px-6 py-4">{data.trackingNumber}</td>
-                  <td className="px-6 py-4">23/9/2030</td>
-                  <td className="px-6 py-4">{data.status}</td>
-                  <td className="px-6 py-4">
-                    <a
-                      href="/"
-                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              {(role === "pak" ? filteredData : companyInfo || [])?.map(
+                (data, index) => (
+                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                     >
-                      20/10/2024
-                    </a>
-                  </td>
-                  <td className="px-6 py-4 cursor-pointer">
-                    <span onClick={() => toggleDropdown(index)}>
-                      <EllipsisVertical />
-                      <DropDown
-                        EditComp={`/editbusiness/${data.businessInfo._id}`}
-                        handleDelete={() => handleDelete(data.businessInfo._id)}
-                        isOpen={isOpenMap[index]}
-                        setIsOpen={(isOpen) =>
-                          setIsOpenMap((prev) => ({ ...prev, [index]: isOpen }))
-                        }
-                      />
-                    </span>
-                  </td>
-                </tr>
-              ))}
+                      {data.businessInfo.companyNameEnglish}
+                    </th>
+                    <td className="px-6 py-4">
+                      {data.firstname} {data.lastname}
+                    </td>
+                    <td className="px-6 py-4">{data.businessInfo.email}</td>
+                    <td className="px-6 py-4">{data.phoneNumberKsa}</td>
+                    <td className="px-6 py-4">{data.trackingNumber}</td>
+                    <td className="px-6 py-4">23/9/2030</td>
+                    <td className="px-6 py-4">{data.status}</td>
+                    <td className="px-6 py-4">
+                      <a
+                        href="/"
+                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      >
+                        20/10/2024
+                      </a>
+                    </td>
+                    <td className="px-6 py-4 cursor-pointer">
+                      <span onClick={() => toggleDropdown(index)}>
+                        <EllipsisVertical />
+                        <DropDown
+                          EditComp={`/editbusiness/${data.businessInfo._id}`}
+                          handleDelete={() =>
+                            handleDelete(data.businessInfo._id)
+                          }
+                          isOpen={isOpenMap[index]}
+                          setIsOpen={(isOpen) =>
+                            setIsOpenMap((prev) => ({
+                              ...prev,
+                              [index]: isOpen,
+                            }))
+                          }
+                        />
+                      </span>
+                    </td>
+                  </tr>
+                )
+              )}
             </tbody>
           )}
           {userlist && (

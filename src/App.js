@@ -13,7 +13,6 @@ import Business from "./pages/business";
 import Company from "./pages/company";
 import PrivateRoute from "./utils/PrivateRoute";
 
-
 function App() {
   const isAuthenticated = useSelector((state) => state.appUser.isAuthenticated);
 
@@ -43,7 +42,7 @@ function App() {
         />
         <Route
           path="/editbusiness/:id"
-          element={<PrivateRoute element={<Business />} roles={["admin"]} />} // Only admins can edit businesses
+          element={<PrivateRoute element={<Business />} roles={["admin","pak"]} />} // Only admins can edit businesses
         />
         <Route
           path="/leads"
@@ -60,7 +59,9 @@ function App() {
         />
         <Route
           path="/business"
-          element={<PrivateRoute element={<Company />} roles={["admin"]} />} // Only admins can access company details
+          element={
+            <PrivateRoute element={<Company />} roles={["admin", "pak"]} />
+          } // Only admins can access company details
         />
         <Route path="/not-found" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/not-found" replace />} />
