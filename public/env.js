@@ -26,7 +26,7 @@ window.env = {
   "NODE": "C:\\Program Files\\nodejs\\node.exe",
   "NODE_EXE": "C:\\Program Files\\nodejs\\\\node.exe",
   "NPM_CLI_JS": "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
-  "npm_command": "start",
+  "npm_command": "run-script",
   "npm_config_cache": "C:\\Users\\dell\\AppData\\Local\\npm-cache",
   "npm_config_globalconfig": "C:\\Program Files\\nodejs\\etc\\npmrc",
   "npm_config_global_prefix": "C:\\Program Files\\nodejs",
@@ -39,8 +39,8 @@ window.env = {
   "npm_config_userconfig": "C:\\Users\\dell\\.npmrc",
   "npm_config_user_agent": "npm/10.2.4 node/v21.6.0 win32 x64 workspaces/false",
   "npm_execpath": "C:\\Users\\dell\\AppData\\Roaming\\nvm\\v21.6.0\\node_modules\\npm\\bin\\npm-cli.js",
-  "npm_lifecycle_event": "start",
-  "npm_lifecycle_script": "react-dotenv && react-scripts start",
+  "npm_lifecycle_event": "build",
+  "npm_lifecycle_script": "react-dotenv && react-scripts build",
   "npm_node_execpath": "C:\\Program Files\\nodejs\\node.exe",
   "npm_package_json": "D:\\IMBS-Digital Solution\\imbs-digital-frontend\\package.json",
   "npm_package_name": "imbs-digital",
@@ -82,7 +82,7 @@ window.env = {
   "VSCODE_GIT_ASKPASS_NODE": "C:\\Users\\dell\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
   "VSCODE_GIT_IPC_HANDLE": "\\\\.\\pipe\\vscode-git-bd245e0368-sock",
   "VSCODE_INJECTION": "1",
-  "VSCODE_NONCE": "5e568058-0767-4a52-973d-178b999169e5",
+  "VSCODE_NONCE": "0bd112ea-b1d4-48bc-9110-c648e7a2edff",
   "windir": "C:\\Windows",
   "ZES_ENABLE_SYSMAN": "1"
 };

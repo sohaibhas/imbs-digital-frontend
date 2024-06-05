@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/acubetsc/public_html  # Replace `<username>` with your actual username
+    - /bin/cp -r * $DEPLOYPATH
